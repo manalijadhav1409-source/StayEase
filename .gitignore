@@ -1,1 +1,14 @@
 /.metadata/
+# Local configuration
+src/main/resources/application-local.properties
+
+# IDE
+.classpath
+.project
+.settings/
+
+# Maven
+target/
+
+# Logs
+*.log
