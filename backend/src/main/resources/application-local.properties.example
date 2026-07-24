@@ -1,4 +1,5 @@
 spring.datasource.url=jdbc:mysql://localhost:3306/stayEase_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
 spring.datasource.username=root
-spring.datasource.password=chavan1234
-jwt.secret=VGhpc0lzQVNlY3JldEtleUZvclN0YXlFYXNlSldUQXV0aGVudGljYXRpb24xMjM0NTY3ODkw
+spring.datasource.password=YOUR_PASSWORD
+
+jwt.secret=YOUR_JWT_SECRET
