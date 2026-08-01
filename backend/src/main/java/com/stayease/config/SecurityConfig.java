@@ -30,30 +30,34 @@ public class SecurityConfig {
 			this.jwtAuthenticationFilter = jwtAuthenticationFilter;
 		}
 
+   
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-      
-    	http
-        .csrf(csrf -> csrf.disable())
-        .sessionManagement(session ->
-                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(auth -> auth
-                .requestMatchers(
-                        "/api/auth/**",
-                        "/v3/api-docs/**",
-                        "/swagger-ui/**",
-                        "/swagger-ui.html")
-                .permitAll()
-                .anyRequest()
-                .authenticated());
-    	http.addFilterBefore(
-    	        jwtAuthenticationFilter,
-    	        UsernamePasswordAuthenticationFilter.class
-    	);
+        http
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(session ->
+                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                    .requestMatchers(
+                            "/api/auth/**",
+                            "/v3/api-docs/**",
+                            "/swagger-ui/**",
+                            "/swagger-ui.html")
+                    .permitAll()
 
-    	return http.build();
-   
+                    .requestMatchers("/api/admin/**")
+                    .hasRole("ADMIN")
+
+                    .anyRequest()
+                    .authenticated());
+
+        http.addFilterBefore(
+                jwtAuthenticationFilter,
+                UsernamePasswordAuthenticationFilter.class
+        );
+
+        return http.build();
     }
 
     @Bean
