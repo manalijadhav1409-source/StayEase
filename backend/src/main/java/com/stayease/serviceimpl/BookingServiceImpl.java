@@ -35,7 +35,10 @@ public class BookingServiceImpl implements BookingService {
         Room room = roomRepository.findById(request.getRoomId())
                 .orElseThrow(() -> new RuntimeException("Room not found"));
 
-        if (!Boolean.FALSE.equals(room.getAvailable())) {
+        System.out.println("Room ID : " + room.getId());
+        System.out.println("Available : " + room.getAvailable());
+
+        if (!room.getAvailable()) {
             throw new RuntimeException("Room is not available");
         }
 
