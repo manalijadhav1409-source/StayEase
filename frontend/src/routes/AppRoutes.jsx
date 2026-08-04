@@ -5,6 +5,8 @@ import RegisterPage from "../pages/auth/RegisterPage";
 import HomePage from "../pages/home/HomePage";
 import ProtectedRoute from "./ProtectedRoute";
 import HotelDetailsPage from "../pages/hotel/HotelDetailsPage";
+import BookingPage from "../pages/booking/BookingPage";
+import PaymentPage from "../pages/payment/PaymentPage";
 
 function AppRoutes() {
   return (
@@ -35,6 +37,24 @@ function AppRoutes() {
           }
         />
 
+        <Route
+          path="/booking/:roomId"
+          element={
+              <ProtectedRoute>
+                  <BookingPage />
+              </ProtectedRoute>
+          }
+        />
+
+
+          <Route
+            path="/payment"
+            element={
+                <ProtectedRoute>
+                    <PaymentPage />
+                </ProtectedRoute>
+            }
+        />
       </Routes>
     </BrowserRouter>
   );
