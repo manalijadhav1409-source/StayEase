@@ -10,6 +10,7 @@ import PaymentPage from "../pages/payment/PaymentPage";
 import RecommendationPage from "../pages/recommendation/RecommendationPage";
 import ReviewPage from "../pages/review/ReviewPage";
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import MyBookingsPage from "../pages/booking/MyBookingsPage";
 
 function AppRoutes() {
   return (
@@ -82,6 +83,16 @@ function AppRoutes() {
             element={
                 <ProtectedRoute>
                     <AdminDashboard />
+                </ProtectedRoute>
+            }
+        />
+
+
+        <Route
+            path="/bookings"
+            element={
+                <ProtectedRoute>
+                    <MyBookingsPage />
                 </ProtectedRoute>
             }
         />

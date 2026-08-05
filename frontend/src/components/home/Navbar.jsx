@@ -80,6 +80,10 @@ function Navbar() {
 
                         )}
 
+                        <Link className="nav-link" to="/bookings">
+                            My Bookings
+                        </Link>
+                        
                         <li className="nav-item ms-3">
 
                             <button
