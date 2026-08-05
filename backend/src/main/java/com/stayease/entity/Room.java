@@ -27,7 +27,7 @@ public class Room extends BaseEntity {
     @Column(nullable = false)
     private Boolean available;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
 

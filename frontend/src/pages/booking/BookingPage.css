@@ -1,0 +1,22 @@
+body{
+    background:#f8f9fa;
+}
+
+.card{
+    border-radius:18px;
+}
+
+.form-control{
+    border-radius:10px;
+}
+
+.btn{
+    border-radius:10px;
+    padding:10px;
+    font-size:17px;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    transition:.3s;
+}
