@@ -31,11 +31,7 @@ public class AdminDashboardServiceImpl implements AdminDashboardService {
         long totalBookings = bookingRepository.count();
         long totalPayments = paymentRepository.count();
 
-        double totalRevenue = bookingRepository.findAll()
-                .stream()
-                .map(booking -> booking.getTotalPrice() == null ? 0.0 : booking.getTotalPrice())
-                .mapToDouble(Double::doubleValue)
-                .sum();
+        double totalRevenue = paymentRepository.getTotalRevenue();
 
         return AdminDashboardResponse.builder()
                 .totalUsers(totalUsers)

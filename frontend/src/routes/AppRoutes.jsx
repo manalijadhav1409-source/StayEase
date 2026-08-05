@@ -7,6 +7,9 @@ import ProtectedRoute from "./ProtectedRoute";
 import HotelDetailsPage from "../pages/hotel/HotelDetailsPage";
 import BookingPage from "../pages/booking/BookingPage";
 import PaymentPage from "../pages/payment/PaymentPage";
+import RecommendationPage from "../pages/recommendation/RecommendationPage";
+import ReviewPage from "../pages/review/ReviewPage";
+import AdminDashboard from "../pages/admin/AdminDashboard";
 
 function AppRoutes() {
   return (
@@ -52,6 +55,33 @@ function AppRoutes() {
             element={
                 <ProtectedRoute>
                     <PaymentPage />
+                </ProtectedRoute>
+            }
+        />
+
+        <Route
+            path="/recommendation"
+            element={
+                <ProtectedRoute>
+                    <RecommendationPage />
+                </ProtectedRoute>
+            }
+        />
+
+        <Route
+            path="/review/:hotelId"
+            element={
+                <ProtectedRoute>
+                    <ReviewPage />
+                </ProtectedRoute>
+            }
+        />
+
+        <Route
+            path="/admin/dashboard"
+            element={
+                <ProtectedRoute>
+                    <AdminDashboard />
                 </ProtectedRoute>
             }
         />

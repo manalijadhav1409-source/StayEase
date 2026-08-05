@@ -1,80 +1,106 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
 
-      <div className="container">
+    const navigate = useNavigate();
 
-        <Link className="navbar-brand fw-bold fs-3" to="/home">
-          StayEase
-        </Link>
+    const user = JSON.parse(localStorage.getItem("user"));
 
-        <button
-          className="navbar-toggler"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbar"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+    const handleLogout = () => {
 
-        <div
-          className="collapse navbar-collapse"
-          id="navbar"
-        >
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
 
-          <ul className="navbar-nav ms-auto align-items-center">
+        navigate("/login");
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/home">
-                Home
-              </Link>
-            </li>
+    };
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/hotels">
-                Hotels
-              </Link>
-            </li>
+    return (
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/recommendation">
-                Recommendations
-              </Link>
-            </li>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
 
-            <li className="nav-item">
-              <Link className="nav-link" to="/bookings">
-                My Bookings
-              </Link>
-            </li>
+            <div className="container">
 
-            <li className="nav-item ms-3">
+                <Link
+                    className="navbar-brand fw-bold fs-3"
+                    to="/home"
+                >
+                    StayEase
+                </Link>
 
-              <button
-                className="btn btn-warning"
-                onClick={() => {
+                <button
+                    className="navbar-toggler"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbar"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
 
-                  localStorage.removeItem("token");
-                  localStorage.removeItem("user");
+                <div
+                    className="collapse navbar-collapse"
+                    id="navbar"
+                >
 
-                  window.location.href = "/login";
+                    <ul className="navbar-nav ms-auto align-items-center">
 
-                }}
-              >
-                Logout
-              </button>
+                        <li className="nav-item">
 
-            </li>
+                            <Link
+                                className="nav-link"
+                                to="/home"
+                            >
+                                Home
+                            </Link>
 
-          </ul>
+                        </li>
 
-        </div>
+                        <li className="nav-item">
 
-      </div>
+                            <Link
+                                className="nav-link"
+                                to="/recommendation"
+                            >
+                                Recommendations
+                            </Link>
 
-    </nav>
-  );
+                        </li>
+
+                        {user?.role === "ADMIN" && (
+
+                            <li className="nav-item">
+
+                                <Link
+                                    className="nav-link"
+                                    to="/admin/dashboard"
+                                >
+                                    Dashboard
+                                </Link>
+
+                            </li>
+
+                        )}
+
+                        <li className="nav-item ms-3">
+
+                            <button
+                                className="btn btn-warning"
+                                onClick={handleLogout}
+                            >
+                                Logout
+                            </button>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    );
+
 }
 
 export default Navbar;
