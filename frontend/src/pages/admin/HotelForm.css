@@ -1,0 +1,77 @@
+.hotel-form-page{
+
+    min-height:100vh;
+
+    background:#f4f7fb;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.hotel-form-card{
+
+    max-width:700px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.1);
+
+}
+
+.hotel-form-card h2{
+
+    text-align:center;
+
+    font-weight:700;
+
+    color:#1e293b;
+
+}
+
+.hotel-form-card label{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:#475569;
+
+}
+
+.hotel-form-card .form-control{
+
+    border-radius:12px;
+
+    padding:12px;
+
+    border:1px solid #dbe4ee;
+
+}
+
+.hotel-form-card .form-control:focus{
+
+    box-shadow:0 0 10px rgba(13,110,253,.25);
+
+    border-color:#0d6efd;
+
+}
+
+.hotel-form-card button{
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    font-size:17px;
+
+}

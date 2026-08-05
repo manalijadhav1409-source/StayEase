@@ -26,6 +26,7 @@ public class RoomController {
                         "Room added successfully",
                         roomService.addRoom(request)
                 ));
+        
     }
     
     
@@ -66,6 +67,18 @@ public class RoomController {
                         true,
                         "Rooms fetched successfully",
                         roomService.getRoomsByHotel(hotelId)
+                )
+        );
+    }
+    
+    @GetMapping
+    public ResponseEntity<ApiResponse> getAllRooms() {
+
+        return ResponseEntity.ok(
+                new ApiResponse(
+                        true,
+                        "Rooms fetched successfully",
+                        roomService.getAllRooms()
                 )
         );
     }
