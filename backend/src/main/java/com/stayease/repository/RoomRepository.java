@@ -13,18 +13,24 @@ import com.stayease.entity.Room;
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
     List<Room> findByHotelId(Long hotelId);
+
     @Query("""
-    		SELECT r
-    		FROM Room r
-    		WHERE LOWER(r.hotel.city) = LOWER(:city)
-    		AND r.price <= :budget
-    		AND r.capacity >= :guests
-    		AND r.available = true
-    		ORDER BY r.hotel.rating DESC
-    		""")
-    		List<Room> findRecommendedRooms(
-    		        @Param("city") String city,
-    		        @Param("budget") Double budget,
-    		        @Param("guests") Integer guests);
+        SELECT r
+        FROM Room r
+        WHERE LOWER(r.hotel.city) = LOWER(:city)
+        AND r.price <= :budget
+        AND r.capacity >= :guests
+        AND r.available = true
+        ORDER BY r.hotel.rating DESC
+    """)
+    List<Room> findRecommendedRooms(
+            @Param("city") String city,
+            @Param("budget") Double budget,
+            @Param("guests") Integer guests
+    );
+
+    List<Room> findTop10ByOrderByIdDesc();
+
+    List<Room> findByAvailableTrue();
 
 }

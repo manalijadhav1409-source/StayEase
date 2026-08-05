@@ -11,6 +11,12 @@ import RecommendationPage from "../pages/recommendation/RecommendationPage";
 import ReviewPage from "../pages/review/ReviewPage";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import MyBookingsPage from "../pages/booking/MyBookingsPage";
+import HotelManagement from "../pages/admin/HotelManagement";
+import AddHotel from "../pages/admin/AddHotel";
+import EditHotel from "../pages/admin/EditHotel";
+import RoomManagement from "../pages/admin/RoomManagement";
+import AddRoom from "../pages/admin/AddRoom";
+import EditRoom from "../pages/admin/EditRoom";
 
 function AppRoutes() {
   return (
@@ -96,7 +102,37 @@ function AppRoutes() {
                 </ProtectedRoute>
             }
         />
+
+        <Route
+            path="/admin/hotels"
+            element={<HotelManagement />}
+        />
+        <Route
+            path="/admin/hotels/add"
+            element={<AddHotel />}
+        />
+
+        <Route
+            path="/admin/hotels/edit/:id"
+            element={<EditHotel />}
+        />
+
+        <Route
+            path="/admin/rooms"
+            element={<RoomManagement />}
+        />
+
+        <Route
+            path="/admin/rooms/add"
+            element={<AddRoom />}
+        />
+
+        <Route
+            path="/admin/rooms/edit/:id"
+            element={<EditRoom />}
+        />
       </Routes>
+
     </BrowserRouter>
   );
 }

@@ -22,12 +22,15 @@ public class RoomServiceImpl implements RoomService {
 	private final RoomRepository roomRepository;
 	private final HotelRepository hotelRepository;
 	
+	
 	public RoomServiceImpl(RoomRepository roomRepository, HotelRepository hotelRepository) {
 		super();
 		this.roomRepository = roomRepository;
 		this.hotelRepository = hotelRepository;
 	}
 
+	
+	 
 	@Override
 	public RoomResponse addRoom(RoomRequest request) {
 
@@ -111,5 +114,26 @@ public class RoomServiceImpl implements RoomService {
 	                    .build())
 	            .toList();
 	}
+
+
+
+	@Override
+	public List<RoomResponse> getAllRooms() {
+
+	    return roomRepository.findAll()
+	            .stream()
+	            .map(room -> RoomResponse.builder()
+	                    .id(room.getId())                  // <-- id, roomId nahi
+	                    .roomType(room.getRoomType())
+	                    .price(room.getPrice())
+	                    .capacity(room.getCapacity())
+	                    .available(room.getAvailable())
+	                    .hotelId(room.getHotel().getId())
+	                    .hotelName(room.getHotel().getHotelName())
+	                    .build())
+	            .toList();
+	}
+	
+	
 
 }
