@@ -299,7 +299,12 @@ function AdminDashboard() {
                         </div>
                     </div>
                 </div>
-
+                   <Link
+                        to="/admin/bookings"
+                        className="btn btn-primary"
+                    >
+                        Manage Bookings
+                    </Link>
             </div>
         </div>
     );
