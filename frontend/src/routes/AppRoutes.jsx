@@ -17,6 +17,7 @@ import EditHotel from "../pages/admin/EditHotel";
 import RoomManagement from "../pages/admin/RoomManagement";
 import AddRoom from "../pages/admin/AddRoom";
 import EditRoom from "../pages/admin/EditRoom";
+import BookingManagement from "../pages/admin/BookingManagement";
 
 function AppRoutes() {
   return (
@@ -130,6 +131,11 @@ function AppRoutes() {
         <Route
             path="/admin/rooms/edit/:id"
             element={<EditRoom />}
+        />
+
+        <Route
+            path="/admin/bookings"
+            element={<BookingManagement />}
         />
       </Routes>
 
