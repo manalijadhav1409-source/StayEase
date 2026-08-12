@@ -7,6 +7,9 @@ import hotelImage from "../../assets/images/hotel-card.jpg";
 import tajBanner from "../../assets/images/taj-banner.jpg";
 import royalBanner from "../../assets/images/royal-orchid-banner.jpg";
 
+import superDeluxeRoom from "../../assets/images/super-deluxe.jpg";
+import deluxeRoom from "../../assets/images/deluxe-room.jpg";
+
 function RecommendationPage() {
 
     const navigate = useNavigate();
@@ -22,6 +25,11 @@ function RecommendationPage() {
     const hotelImages = {
         "Taj Hotel": tajBanner,
         "Royal Orchid Hotel": royalBanner,
+    };
+
+    const roomImages = {
+        "Super Deluxe": superDeluxeRoom,
+        "Deluxe": deluxeRoom,
     };
 
     const handleChange = (e) => {
@@ -139,71 +147,82 @@ function RecommendationPage() {
 
                 <div className="row">
 
-                    {recommendations.map((hotel) => (
+                    {recommendations.map((hotel) => {
 
-                        <div
-                            className="col-lg-4 col-md-6 mb-4"
-                            key={hotel.hotelId}
-                        >
+                        const roomType = hotel.roomType?.trim();
 
-                            <div className="card shadow h-100 border-0">
+                        const image =
+                            roomImages[roomType] ||
+                            hotelImages[hotel.hotelName?.trim()] ||
+                            hotelImage;
 
-                                <img
-                                    src={hotelImages[hotel.hotelName] || hotelImage}
-                                    alt={hotel.hotelName}
-                                    className="card-img-top"
-                                    style={{
-                                        height: "220px",
-                                        objectFit: "cover",
-                                    }}
-                                />
+                        return (
 
-                                <div className="card-body">
+                            <div
+                                className="col-lg-4 col-md-6 mb-4"
+                                key={hotel.hotelId}
+                            >
 
-                                    <div className="d-flex justify-content-between align-items-center mb-2">
+                                <div className="card shadow h-100 border-0">
 
-                                        <h4 className="fw-bold mb-0">
-                                            {hotel.hotelName}
-                                        </h4>
+                                    <img
+                                        src={image}
+                                        alt={hotel.roomType || hotel.hotelName}
+                                        className="card-img-top"
+                                        style={{
+                                            height: "220px",
+                                            objectFit: "cover",
+                                        }}
+                                    />
 
-                                        <span className="badge bg-success">
-                                            ⭐ {hotel.rating}
-                                        </span>
+                                    <div className="card-body">
+
+                                        <div className="d-flex justify-content-between align-items-center mb-2">
+
+                                            <h4 className="fw-bold mb-0">
+                                                {hotel.hotelName}
+                                            </h4>
+
+                                            <span className="badge bg-success">
+                                                ⭐ {hotel.rating}
+                                            </span>
+
+                                        </div>
+
+                                        <p>
+                                            📍 {hotel.city}
+                                        </p>
+
+                                        <p>
+                                            🛏 {hotel.roomType}
+                                        </p>
+
+                                        <p>
+                                            👥 Capacity : {hotel.capacity}
+                                        </p>
+
+                                        <p className="fw-bold text-primary">
+                                            ₹ {hotel.price} / Night
+                                        </p>
+
+                                        <button
+                                            className="btn btn-warning w-100"
+                                            onClick={() =>
+                                                navigate(`/hotel/${hotel.hotelId}`)
+                                            }
+                                        >
+                                            View Hotel
+                                        </button>
 
                                     </div>
-
-                                    <p>
-                                        📍 {hotel.city}
-                                    </p>
-
-                                    <p>
-                                        🛏 {hotel.roomType}
-                                    </p>
-
-                                    <p>
-                                        👥 Capacity : {hotel.capacity}
-                                    </p>
-
-                                    <p className="fw-bold text-primary">
-                                        ₹ {hotel.price} / Night
-                                    </p>
-
-                                    <button
-                                        className="btn btn-warning w-100"
-                                        onClick={() =>
-                                            navigate(`/hotel/${hotel.hotelId}`)
-                                        }
-                                    >
-                                        View Hotel
-                                    </button>
 
                                 </div>
 
                             </div>
 
-                        </div>
+                        );
 
-                    ))}
+                    })}
 
                 </div>
 
