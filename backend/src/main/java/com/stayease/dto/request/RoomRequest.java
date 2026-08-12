@@ -20,4 +20,10 @@ public class RoomRequest {
     private Boolean available;
 
     private Long hotelId;
+    
+   
+
+    private String imageUrl;
+
+   
 }

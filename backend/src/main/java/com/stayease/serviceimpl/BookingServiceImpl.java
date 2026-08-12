@@ -78,6 +78,9 @@ public class BookingServiceImpl implements BookingService {
         return BookingResponse.builder()
                 .bookingId(savedBooking.getId())
                 .roomId(savedBooking.getRoomId())
+                .hotelName(room.getHotel().getHotelName())
+                .roomType(room.getRoomType())
+                .userName(user.getFirstName() + " " + user.getLastName())
                 .checkInDate(savedBooking.getCheckInDate())
                 .checkOutDate(savedBooking.getCheckOutDate())
                 .totalDays(savedBooking.getTotalDays())
@@ -94,15 +97,25 @@ public class BookingServiceImpl implements BookingService {
 
         return bookingRepository.findByUserId(user.getId())
                 .stream()
-                .map(booking -> BookingResponse.builder()
-                        .bookingId(booking.getId())
-                        .roomId(booking.getRoomId())
-                        .checkInDate(booking.getCheckInDate())
-                        .checkOutDate(booking.getCheckOutDate())
-                        .totalDays(booking.getTotalDays())
-                        .totalPrice(booking.getTotalPrice())
-                        .bookingStatus(booking.getBookingStatus())
-                        .build())
+                .map(booking -> {
+
+                    Room room = roomRepository.findById(booking.getRoomId())
+                            .orElseThrow(() -> new RuntimeException("Room not found"));
+
+                    return BookingResponse.builder()
+                            .bookingId(booking.getId())
+                            .roomId(booking.getRoomId())
+                            .hotelName(room.getHotel().getHotelName())
+                            .roomType(room.getRoomType())
+                            .userName(user.getFirstName() + " " + user.getLastName())
+                            .checkInDate(booking.getCheckInDate())
+                            .checkOutDate(booking.getCheckOutDate())
+                            .totalDays(booking.getTotalDays())
+                            .totalPrice(booking.getTotalPrice())
+                            .bookingStatus(booking.getBookingStatus())
+                            .build();
+
+                })
                 .collect(Collectors.toList());
     }
 
@@ -112,9 +125,18 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() -> new RuntimeException("Booking not found"));
 
+        Room room = roomRepository.findById(booking.getRoomId())
+                .orElseThrow(() -> new RuntimeException("Room not found"));
+
         return BookingResponse.builder()
                 .bookingId(booking.getId())
                 .roomId(booking.getRoomId())
+                .hotelName(room.getHotel().getHotelName())
+                .roomType(room.getRoomType())
+                .userName(
+                        booking.getUser().getFirstName() + " " +
+                        booking.getUser().getLastName()
+                )
                 .checkInDate(booking.getCheckInDate())
                 .checkOutDate(booking.getCheckOutDate())
                 .totalDays(booking.getTotalDays())

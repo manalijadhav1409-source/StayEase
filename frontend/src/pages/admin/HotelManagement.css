@@ -1,0 +1,68 @@
+.hotel-management-page{
+    min-height:100vh;
+    background:#f4f7fb;
+}
+
+.hotel-management-page h2{
+    font-weight:700;
+    color:#1e293b;
+}
+
+.hotel-management-page p{
+    color:#64748b;
+}
+
+.hotel-management-page .card{
+    border:none;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.hotel-management-page table{
+    margin-bottom:0;
+}
+
+.hotel-management-page thead{
+    background:#0f172a;
+    color:white;
+}
+
+.hotel-management-page thead th{
+    padding:18px;
+    font-weight:600;
+    border:none;
+}
+
+.hotel-management-page tbody td{
+    padding:18px;
+    vertical-align:middle;
+}
+
+.hotel-management-page tbody tr:hover{
+    background:#eef5ff;
+    transition:.3s;
+}
+
+.hotel-management-page .btn-primary{
+    border-radius:12px;
+    padding:10px 22px;
+    font-weight:600;
+}
+
+.hotel-management-page .btn-warning{
+    border-radius:10px;
+}
+
+.hotel-management-page .btn-danger{
+    border-radius:10px;
+}
+.btn-sm{
+    min-width:90px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+td .d-flex{
+    justify-content:center;
+}
