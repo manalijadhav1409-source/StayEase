@@ -42,6 +42,7 @@ public class RoomServiceImpl implements RoomService {
 	            .price(request.getPrice())
 	            .capacity(request.getCapacity())
 	            .available(request.getAvailable())
+	            .imageUrl(request.getImageUrl())
 	            .hotel(hotel)
 	            .build();
 
@@ -53,6 +54,7 @@ public class RoomServiceImpl implements RoomService {
 	            .price(savedRoom.getPrice())
 	            .capacity(savedRoom.getCapacity())
 	            .available(savedRoom.getAvailable())
+	            .imageUrl(savedRoom.getImageUrl())
 	            .hotelId(hotel.getId())
 	            .hotelName(hotel.getHotelName())
 	            .build();
@@ -73,6 +75,7 @@ public class RoomServiceImpl implements RoomService {
 	    room.setCapacity(request.getCapacity());
 	    room.setAvailable(request.getAvailable());
 	    room.setHotel(hotel);
+	    room.setImageUrl(request.getImageUrl());
 
 	    Room updatedRoom = roomRepository.save(room);
 
@@ -83,6 +86,7 @@ public class RoomServiceImpl implements RoomService {
 	            .capacity(updatedRoom.getCapacity())
 	            .available(updatedRoom.getAvailable())
 	            .hotelId(hotel.getId())
+	            .imageUrl(updatedRoom.getImageUrl())
 	            .hotelName(hotel.getHotelName())
 	            .build();
 	}
@@ -109,6 +113,7 @@ public class RoomServiceImpl implements RoomService {
 	                    .price(room.getPrice())
 	                    .capacity(room.getCapacity())
 	                    .available(room.getAvailable())
+	                    .imageUrl(room.getImageUrl())
 	                    .hotelId(room.getHotel().getId())
 	                    .hotelName(room.getHotel().getHotelName())
 	                    .build())
@@ -123,11 +128,12 @@ public class RoomServiceImpl implements RoomService {
 	    return roomRepository.findAll()
 	            .stream()
 	            .map(room -> RoomResponse.builder()
-	                    .id(room.getId())                  // <-- id, roomId nahi
+	                    .id(room.getId())
 	                    .roomType(room.getRoomType())
 	                    .price(room.getPrice())
 	                    .capacity(room.getCapacity())
 	                    .available(room.getAvailable())
+	                    .imageUrl(room.getImageUrl())
 	                    .hotelId(room.getHotel().getId())
 	                    .hotelName(room.getHotel().getHotelName())
 	                    .build())

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import {
     getAllRooms,
     deleteRoom
@@ -12,9 +13,7 @@ function RoomManagement() {
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-
         loadRooms();
-
     }, []);
 
     const loadRooms = async () => {
@@ -60,8 +59,7 @@ function RoomManagement() {
         }
 
     };
-
-    return (
+        return (
 
         <div className="room-page">
 
@@ -72,15 +70,11 @@ function RoomManagement() {
                     <div>
 
                         <h2 className="fw-bold">
-
                             Room Management
-
                         </h2>
 
                         <p className="text-muted">
-
                             Manage hotel rooms
-
                         </p>
 
                     </div>
@@ -89,9 +83,7 @@ function RoomManagement() {
                         to="/admin/rooms/add"
                         className="btn btn-success"
                     >
-
                         + Add Room
-
                     </Link>
 
                 </div>
@@ -107,17 +99,12 @@ function RoomManagement() {
                                 <tr>
 
                                     <th>ID</th>
-
                                     <th>Hotel</th>
-
                                     <th>Room Type</th>
-
                                     <th>Price</th>
-
                                     <th>Capacity</th>
-
+                                    <th>Image</th>
                                     <th>Status</th>
-
                                     <th>Actions</th>
 
                                 </tr>
@@ -142,20 +129,41 @@ function RoomManagement() {
 
                                         <td>
 
+                                            {room.imageUrl ? (
+
+                                                <img
+                                                    src={room.imageUrl}
+                                                    alt={room.roomType}
+                                                    style={{
+                                                        width: "100px",
+                                                        height: "70px",
+                                                        objectFit: "cover",
+                                                        borderRadius: "8px"
+                                                    }}
+                                                />
+
+                                            ) : (
+
+                                                <span className="text-muted">
+                                                    No Image
+                                                </span>
+
+                                            )}
+
+                                        </td>
+
+                                        <td>
+
                                             {room.available ? (
 
                                                 <span className="badge bg-success">
-
                                                     Available
-
                                                 </span>
 
                                             ) : (
 
                                                 <span className="badge bg-danger">
-
                                                     Occupied
-
                                                 </span>
 
                                             )}
@@ -201,7 +209,6 @@ function RoomManagement() {
         </div>
 
     );
-
 }
 
 export default RoomManagement;

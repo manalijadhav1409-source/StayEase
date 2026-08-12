@@ -22,6 +22,8 @@ function AddRoom() {
 
         capacity: "",
 
+        imageUrl: "",
+
         available: true
 
     });
@@ -196,6 +198,19 @@ function AddRoom() {
                             </select>
 
                         </div>
+
+                        <div className="mb-3">
+                                <label className="form-label">Room Image URL</label>
+
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    name="imageUrl"
+                                    value={room.imageUrl || ""}
+                                    onChange={handleChange}
+                                    placeholder="https://images.unsplash.com/..."
+                                />
+                            </div>
 
                         <button className="btn btn-success w-100">
 

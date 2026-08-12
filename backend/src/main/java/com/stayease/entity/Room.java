@@ -23,8 +23,13 @@ public class Room extends BaseEntity {
 
     @Column(nullable = false)
     private Boolean available;
+    
+    
+    @Column(length = 500)
+    private String imageUrl;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "hotel_id", nullable = false)
     private Hotel hotel;
+    
 }

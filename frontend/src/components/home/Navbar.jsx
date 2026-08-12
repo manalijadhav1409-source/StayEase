@@ -54,6 +54,8 @@ function Navbar() {
 
                         </li>
 
+                        {user?.role !== "ADMIN" && (
+
                         <li className="nav-item">
 
                             <Link
@@ -64,6 +66,8 @@ function Navbar() {
                             </Link>
 
                         </li>
+
+                    )}
 
                         {user?.role === "ADMIN" && (
 
@@ -80,9 +84,65 @@ function Navbar() {
 
                         )}
 
-                        <Link className="nav-link" to="/bookings">
-                            My Bookings
-                        </Link>
+                        {user?.role === "ADMIN" && (
+
+                            <li className="nav-item">
+
+                                <Link
+                                    className="nav-link"
+                                    to="/admin/bookings"
+                                >
+                                    Manage Bookings
+                                </Link>
+
+                            </li>
+
+                        )}
+
+                        {user?.role === "ADMIN" && (
+
+                        <li className="nav-item">
+
+                            <Link
+                                className="nav-link"
+                                to="/admin/hotels"
+                            >
+                                Manage Hotels
+                            </Link>
+
+                        </li>
+
+                       )}
+
+                       {user?.role === "ADMIN" && (
+
+                            <li className="nav-item">
+
+                                <Link
+                                    className="nav-link"
+                                    to="/admin/rooms"
+                                >
+                                    Manage Rooms
+                                </Link>
+
+                            </li>
+
+                        )}
+
+                        {user?.role !== "ADMIN" && (
+
+                        <li className="nav-item">
+
+                            <Link
+                                className="nav-link"
+                                to="/bookings"
+                            >
+                                My Bookings
+                            </Link>
+
+                        </li>
+
+                    )}
                         
                         <li className="nav-item ms-3">
 
