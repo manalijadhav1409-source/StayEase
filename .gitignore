@@ -1,3 +1,12 @@
-/.metadata/
+# Environment / sensitive configuration
+backend/src/main/resources/application.properties
+backend/src/main/resources/application-local.properties
+
+# Maven build files
+backend/target/
+
+# Database dump
+bookings_data.sql/.metadata/
 
 backend/target/
+/.metadata/
