@@ -10,3 +10,5 @@ bookings_data.sql/.metadata/
 
 backend/target/
 /.metadata/
+
+database/stayease_backup.sql
